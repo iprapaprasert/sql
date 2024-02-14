@@ -27,6 +27,6 @@ GO
 UPDATE Klk4.ActiveMerchant
 SET ProvinceID =
     (SELECT ProvinceID
-    FROM Spatial.Gistda.ProvinceShape poly
+    FROM Spatial.Gistda.ProvinceShape poly WITH(INDEX(SI_ProvinceShape))
     WHERE poly.Geog.STIntersects(MerchantPoint) = 1);
 GO
